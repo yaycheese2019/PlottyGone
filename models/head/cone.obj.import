@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c2i6mpqahy03e"
+path="res://.godot/imported/cone.obj-c97df8e6693151ef1a5d1f8aa60c22e5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cone.obj-c97df8e6693151ef1a5d1f8aa60c22e5.mesh"]
+
+source_file="res://models/head/cone.obj"
+dest_files=["res://.godot/imported/cone.obj-c97df8e6693151ef1a5d1f8aa60c22e5.mesh", "res://.godot/imported/cone.obj-c97df8e6693151ef1a5d1f8aa60c22e5.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ccchr0kr6iucv"
+path="res://.godot/imported/cylinder.obj-0d6970977ff8e934f77b32833371c0be.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cylinder.obj-0d6970977ff8e934f77b32833371c0be.mesh"]
+
+source_file="res://models/head/cylinder.obj"
+dest_files=["res://.godot/imported/cylinder.obj-0d6970977ff8e934f77b32833371c0be.mesh", "res://.godot/imported/cylinder.obj-0d6970977ff8e934f77b32833371c0be.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
