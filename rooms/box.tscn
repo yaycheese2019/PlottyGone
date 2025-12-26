@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://duic7fj3kbge1"]
+
+[ext_resource type="Texture2D" uid="uid://b0fxapy5lxqpr" path="res://icon.svg" id="1_us1s5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ofd5c"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vavi6"]
+sky_material = SubResource("ProceduralSkyMaterial_ofd5c")
+
+[sub_resource type="Environment" id="Environment_xqspm"]
+background_mode = 2
+sky = SubResource("Sky_vavi6")
+tonemap_mode = 2
+
+[node name="box" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xqspm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(11, 1, 11)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+size = Vector3(11, 1, 11)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 6, 0)
+size = Vector3(1, 11, 11)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 6, 0)
+size = Vector3(1, 11, 11)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 6)
+size = Vector3(11, 11, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, -6)
+size = Vector3(11, 11, 1)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 3.1, -5.4)
+pixel_size = 0.02
+texture = ExtResource("1_us1s5")

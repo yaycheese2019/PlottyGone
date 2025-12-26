@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://0kjxw0yesn1t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ofd5c"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_vavi6"]
+sky_material = SubResource("ProceduralSkyMaterial_ofd5c")
+
+[sub_resource type="Environment" id="Environment_xqspm"]
+background_mode = 2
+sky = SubResource("Sky_vavi6")
+tonemap_mode = 2
+
+[node name="box" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xqspm")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(11, 1, 11)

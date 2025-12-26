@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbk822ix8iwqe"]
+
+[ext_resource type="Script" uid="uid://b3u6383gv2tp" path="res://plot_editor.gd" id="1_xbqlw"]
+[ext_resource type="Texture2D" uid="uid://cy74v3hjwp47k" path="res://textures/angry.png" id="2_iebwl"]
+[ext_resource type="Texture2D" uid="uid://dmvj3nlv2shv0" path="res://textures/face.png" id="3_cpsvx"]
+[ext_resource type="Texture2D" uid="uid://b0fxapy5lxqpr" path="res://icon.svg" id="4_8t8w2"]
+[ext_resource type="AudioStream" uid="uid://cb14f03a6b684" path="res://sfx/Xylophone.wav" id="5_cpsvx"]
+[ext_resource type="AudioStream" uid="uid://bahc1iqyt6ivo" path="res://sfx/activate.mp3" id="6_8t8w2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yejae"]
+font_color = Color(1, 0, 0, 1)
+
+[node name="ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbqlw")
+
+[node name="menu" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(189.455, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 189.455
+offset_bottom = -120.0
+grow_vertical = 2
+current_tab = 0
+
+[node name="Rooms" type="Panel" parent="menu"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ItemList" type="ItemList" parent="menu/Rooms"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Characters" type="Panel" parent="menu"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="menu/Characters"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="menu/Characters/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_iebwl")
+expand_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="menu/Characters/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_cpsvx")
+expand_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="menu/Characters/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_8t8w2")
+expand_mode = 4
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="scene_clear" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "delete all"
+
+[node name="scene_add" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "add scene"
+
+[node name="scene_blank" type="Button" parent="Panel/HBoxContainer"]
+layout_mode = 2
+text = "add blank scene"
+
+[node name="confirm_scene_clear" type="ConfirmationDialog" parent="."]
+oversampling_override = 1.0
+title = "Plottygone"
+initial_position = 1
+size = Vector2i(348, 100)
+dialog_text = "Are you sure you want to delete all scenes?"
+
+[node name="blank" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 395.0
+offset_top = 225.0
+offset_right = 636.0
+offset_bottom = 248.0
+scale = Vector2(1.9913924, 1.9913924)
+text = "add a new scene to get started"
+label_settings = SubResource("LabelSettings_yejae")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -84.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "AnimCraft"
+
+[node name="scene_change" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_cpsvx")
+
+[node name="scene_create" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8t8w2")
+
+[connection signal="item_activated" from="menu/Rooms/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="pressed" from="Panel/HBoxContainer/scene_clear" to="." method="_on_scene_clear_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/scene_add" to="." method="_on_scene_add_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/scene_blank" to="." method="_on_scene_blank_pressed"]
+[connection signal="confirmed" from="confirm_scene_clear" to="." method="_on_confirm_scene_clear_confirmed"]

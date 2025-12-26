@@ -1,0 +1,118 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbt2q0i3w14na"]
+
+[ext_resource type="Script" uid="uid://y1x5hqiorvvt" path="res://plot_scene.gd" id="1_cv6b6"]
+[ext_resource type="Texture2D" uid="uid://cfhlypcr5tgd8" path="res://textures/materials/icon16/cog.png" id="2_c612x"]
+[ext_resource type="Texture2D" uid="uid://c3umox5sp6d4d" path="res://textures/materials/icon16/cancel.png" id="3_rvb26"]
+[ext_resource type="Texture2D" uid="uid://4sad4rtph1n2" path="res://textures/materials/icon16/arrow_left.png" id="4_p2snp"]
+[ext_resource type="Texture2D" uid="uid://c6opxu75u6n0k" path="res://textures/materials/icon16/arrow_right.png" id="5_u30ik"]
+[ext_resource type="AudioStream" uid="uid://5wp7dw3te85l" path="res://sfx/Map_Waypoint_Deleted_01_9344E057.mp3" id="6_u30ik"]
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(100, 80)
+script = ExtResource("1_cv6b6")
+
+[node name="right" type="Button" parent="."]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="idx" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.5
+offset_right = 22.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Scene 1"
+
+[node name="room" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -11.5
+offset_right = 29.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "bedroom"
+
+[node name="del" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 1
+offset_right = 16.0
+offset_bottom = 16.0
+texture_normal = ExtResource("3_rvb26")
+texture_pressed = ExtResource("3_rvb26")
+texture_hover = ExtResource("3_rvb26")
+texture_disabled = ExtResource("3_rvb26")
+texture_focused = ExtResource("3_rvb26")
+
+[node name="menu" type="PopupMenu" parent="."]
+oversampling_override = 1.0
+item_count = 3
+item_0/text = "delete"
+item_0/id = 0
+item_1/text = "reset length"
+item_1/id = 1
+item_2/text = "duplicate"
+item_2/id = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 85.0
+grow_vertical = 0
+
+[node name="edit" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture_normal = ExtResource("2_c612x")
+texture_pressed = ExtResource("2_c612x")
+texture_hover = ExtResource("2_c612x")
+texture_disabled = ExtResource("2_c612x")
+texture_focused = ExtResource("2_c612x")
+
+[node name="moveleft" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture_normal = ExtResource("4_p2snp")
+texture_pressed = ExtResource("4_p2snp")
+texture_hover = ExtResource("4_p2snp")
+texture_disabled = ExtResource("4_p2snp")
+texture_focused = ExtResource("4_p2snp")
+
+[node name="moveright" type="TextureButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture_normal = ExtResource("5_u30ik")
+texture_pressed = ExtResource("5_u30ik")
+texture_hover = ExtResource("5_u30ik")
+texture_disabled = ExtResource("5_u30ik")
+texture_focused = ExtResource("5_u30ik")
+
+[node name="inspect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_u30ik")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="button_down" from="right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="right" to="." method="_on_right_button_up"]
+[connection signal="pressed" from="del" to="." method="_on_del_pressed"]
+[connection signal="id_pressed" from="menu" to="." method="_on_menu_id_pressed"]
+[connection signal="pressed" from="HBoxContainer/edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="HBoxContainer/moveleft" to="." method="_on_moveleft_pressed"]
+[connection signal="pressed" from="HBoxContainer/moveright" to="." method="_on_moveright_pressed"]

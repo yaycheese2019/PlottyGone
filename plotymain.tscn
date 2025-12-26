@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://synlfrj0abpl"]
+
+[ext_resource type="PackedScene" uid="uid://bbk822ix8iwqe" path="res://animcraft.tscn" id="1_tuwvw"]
+
+[node name="plotymain" type="Node3D"]
+
+[node name="ui" parent="." instance=ExtResource("1_tuwvw")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3000001, 2.4)
